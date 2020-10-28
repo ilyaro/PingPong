@@ -1,4 +1,5 @@
 import flask
+from flask import request
 import shlex, subprocess
 
 app = flask.Flask(__name__)
@@ -6,7 +7,12 @@ app = flask.Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Hello World"
+    return "PingPong Game of 2 Microservices"
+
+@app.route("/pingpong")
+def pingpong():
+    iterations = request.args.get('iterations')
+    return "Number of PingPong iterations: " + iterations
 
 @app.route("/intense")
 def intense():
