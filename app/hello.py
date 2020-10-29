@@ -1,6 +1,7 @@
 import flask
 from flask import request
 import shlex, subprocess
+import sys
 
 app = flask.Flask(__name__)
 
@@ -34,4 +35,5 @@ def intense():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8089)
+    ## Add check if port number is a numbers in the port allowed range
+    app.run(host='0.0.0.0', port=sys.argv[0])
