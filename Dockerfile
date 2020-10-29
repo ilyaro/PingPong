@@ -13,7 +13,6 @@ RUN pip install flask
 RUN mkdir app
 COPY ./app app
 
-EXPOSE 8089
 ENTRYPOINT [ "python3" ]
 
 CMD [ "app/hello.py" ]
