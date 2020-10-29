@@ -1,0 +1,10 @@
+version: "1.0"
+services:
+  pingpong1:
+    image: gfish/pingpong
+    ports:
+      - "8001:8088"
+  pingpong2:
+    image: gfish/pingpong
+    ports:
+      - "8002:8089"
