@@ -1,3 +1,8 @@
+#!/bin/env python3 
+#Description: PingPong game between 2 docker imanges microservices 
+#
+#Author: Ilya Rokhkin
+#Date: 
 import flask
 from flask import request
 import sys
