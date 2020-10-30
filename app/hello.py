@@ -57,7 +57,7 @@ def pingpong():
 		except URLError as e:
 			response = print_message(" Unknown - service problem: Cant reach server: " + url_pong + " ", iterations_count_str) 
 			return response
-		print_message( "iteration " + iterations_count_str + " done, took " + str(c) + " microseconds", "")
+		print_message( " iteration " + iterations_count_str + " done, took " + str(c.total_seconds()) + " microseconds", "")
 		iterations_count += 1
 	return "PingPong finished"
 
