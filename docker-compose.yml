@@ -5,7 +5,7 @@ services:
     build:
       context: .
       args:
-        PORT: ${inport}
+        PORT: 8089
         PARTNER: pong
     ports:
       - ${outport1}:${inport}
@@ -14,7 +14,7 @@ services:
     build:
       context: .
       args:
-        PORT: ${inport}
+        PORT: 8089
         PARTNER: ping
     ports:
       - ${outport2}:${inport}
