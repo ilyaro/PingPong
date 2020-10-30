@@ -15,7 +15,7 @@ from urllib.error import URLError
 app = flask.Flask(__name__)
 
 
-def print_message(msg):
+def print_message(msg, iterations_count):
 	now = datetime.now()
 	date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
 	## respose to write to browser and std out
@@ -33,17 +33,17 @@ def hello():
 def pingpong():
 	iterations = request.args.get('iterations')
 	iterations_int = int(iterations)
-	current_iteration = 1
+	iterations_count = 1
 	partner = os.getenv('PARTNER')
-	while current_iteration <= iterations_int:
+	while iterations_count <= iterations_int:
 		#print "DEBUG: $url $warnnum $critnum" if ($debug);
-		url_pong = "http://" + partner + "/reply?iterations_count=" + str(current_iteration)
+		url_pong = "http://" + partner + "/reply?iterations_count=" + str(iterations_count)
 		try:
 			res = urllib.request.urlopen(url_pong)
-			response = print_message("ping")
+			response = print_message("ping", iterations_count)
 			return response
 		except URLError as e:
-			response = print_message("Unknown - service problem: Cant reach server: " + url_pong) 
+			response = print_message("Unknown - service problem: Cant reach server: " + url_pong, iterations_count) 
 			return response
 		current_iteration += 1
 		
@@ -51,7 +51,7 @@ def pingpong():
 @app.route("/reply")
 def reply():
 	iterations_count = request.args.get('iterations_count')
-	response = print_message("pong")
+	response = print_message("pong", iterations_count)
 	return response
 
 if __name__ == "__main__":
