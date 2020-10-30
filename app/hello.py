@@ -42,7 +42,6 @@ def hello():
 
 @app.route("/pingpong")
 def pingpong():
-	more_details = " Please see docker compose output for more details"
 	## Get iterations argument
 	iterations = request.args.get('iterations')
 	if is_integer(iterations):
@@ -59,7 +58,7 @@ def pingpong():
 			response = print_message(" timeout must be integer " + "Example: &timeout=40 " + "Provided &timeout=" + timeout, "") 
 			return response + more_details
 	iterations_count = 1
-	inport_str = str(inport)
+	##inport_str = str(inport)
 	myhostname = os.getenv('HOSTNAME')
 	## Get partner hostname
 	if myhostname == "ping":
@@ -118,6 +117,11 @@ def reply():
 	return response
 
 if __name__ == "__main__":
-	## Add check if port number is a numbers in the port allowed range
-	inport = int(sys.argv[1])
+	inport_str = sys.argv[1]
+	more_details = " Please see docker compose output for more details"
+	if is_integer(inport_str):
+		inport = int(inport_str)
+	else:
+		response = print_message(" port must be integer " + "Example: 8089" + "Provided port=" + inport_str, "") 
+		return response + more_details
 	app.run(host='0.0.0.0', port=inport)
