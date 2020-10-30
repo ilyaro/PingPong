@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   ping:
-    image: gfish/ping
+    image: gfish/pingpong
     environment:
       - PARTNER=pong
     build:
@@ -9,7 +9,7 @@ services:
     ports:
       - ${outport1}:${inport}
   pong:
-    image: gfish/pong
+    image: gfish/pingpong
     environment:
       - PARTNER=ping
     ports:
