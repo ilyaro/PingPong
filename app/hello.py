@@ -36,4 +36,5 @@ def intense():
 
 if __name__ == "__main__":
     ## Add check if port number is a numbers in the port allowed range
-    app.run(host='0.0.0.0', port=sys.argv[0])
+    inport = int(sys.argv[1])
+    app.run(host='0.0.0.0', port=inport)
