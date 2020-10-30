@@ -7,6 +7,9 @@ import flask
 from flask import request
 import sys
 from datetime import datetime
+##import requests
+import urllib.request
+from urllib.error import URLError
 
 app = flask.Flask(__name__)
 
