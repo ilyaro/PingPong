@@ -5,10 +5,10 @@ services:
     command:  
       - app/hello.py ${inport}
     ports:
-      - "${outport1}:${inport}"
+      - ${outport1}:${inport}
   pingpong2:
     image: gfish/pingpong
     command:
       - app/hello.py ${inport}
   ports:
-      - "${outport2}:${inport}"
+      - ${outport2}:${inport}
