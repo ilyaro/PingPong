@@ -34,7 +34,12 @@ def pingpong():
 	iterations = request.args.get('iterations')
 	iterations_int = int(iterations)
 	iterations_count = 1
-	partner = os.getenv('PARTNER')
+	myhostname = os.getenv('HOSTNAME')
+	## Get partner hostname
+	if myhostname == "ping":
+		partner = pong
+	else:
+		partner = ping
 	while iterations_count <= iterations_int:
 		iterations_count_str = str(iterations_count)
 		## URL for pong
