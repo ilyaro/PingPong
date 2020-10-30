@@ -2,17 +2,17 @@ version: "3.8"
 services:
   ping:
     image: gfish/ping
+    environment:
+      - PARTNER=pong
     build:
       context: .
-      environment:
-        - PARTNER=pong
     ports:
       - ${outport1}:${inport}
   pong:
     image: gfish/pong
+    environment:
+      - PARTNER=ping
     build:
       context: .
-      environment:
-        - PARTNER=ping
     ports:
       - ${outport2}:${inport}
