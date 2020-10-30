@@ -37,9 +37,9 @@ def pingpong():
 	myhostname = os.getenv('HOSTNAME')
 	## Get partner hostname
 	if myhostname == "ping":
-		partner = pong
+		partner = "pong"
 	else:
-		partner = ping
+		partner = "ping"
 	while iterations_count <= iterations_int:
 		iterations_count_str = str(iterations_count)
 		## URL for pong
