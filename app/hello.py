@@ -88,7 +88,7 @@ def pingpong():
 			res = urllib.request.urlopen(url_pong)
 			b = datetime.now()
 			c = b - a
-			if timeout_int:
+			if timeout:
 				##Check if timeout is reached
 				curr_whole_time = round((b - start_time).total_seconds() * 1000)
 				if curr_whole_time > timeout_int:
