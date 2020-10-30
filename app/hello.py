@@ -46,14 +46,18 @@ def pingpong():
 		partner = "ping"
 	while iterations_count <= iterations_int:
 		iterations_count_str = str(iterations_count)
+		a = datetime.datetime.now()
 		print_message(" ping ", iterations_count_str)
 		## URL for pong
 		url_pong = "http://" + partner + ":" + inport_str + "/reply?iterations_count=" + iterations_count_str
 		try:
 			res = urllib.request.urlopen(url_pong)
+			b = datetime.datetime.now()
+			c = b - a
 		except URLError as e:
 			response = print_message(" Unknown - service problem: Cant reach server: " + url_pong + " ", iterations_count_str) 
 			return response
+		print_message( "iteration " + iterations_count_str + " done, took " str(c) + " microseconds\n")
 		iterations_count += 1
 	return "PingPong finished"
 
