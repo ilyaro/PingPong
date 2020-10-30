@@ -36,14 +36,15 @@ def pingpong():
 	iterations_count = 1
 	partner = os.getenv('PARTNER')
 	while iterations_count <= iterations_int:
-		#print "DEBUG: $url $warnnum $critnum" if ($debug);
-		url_pong = "http://" + partner + "/reply?iterations_count=" + str(iterations_count)
+		iterations_count_str = str(iterations_count)
+		## URL for pong
+		url_pong = "http://" + partner + "/reply?iterations_count=" + iterations_count_str
 		try:
 			res = urllib.request.urlopen(url_pong)
-			response = print_message("ping", iterations_count)
+			response = print_message("ping", iterations_count_str)
 			return response
 		except URLError as e:
-			response = print_message("Unknown - service problem: Cant reach server: " + url_pong, iterations_count) 
+			response = print_message("Unknown - service problem: Cant reach server: " + url_pong, iterations_count_str) 
 			return response
 		current_iteration += 1
 		
