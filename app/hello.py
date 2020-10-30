@@ -123,6 +123,6 @@ if __name__ == "__main__":
 	if is_integer(inport_str):
 		inport = int(inport_str)
 	else:
-		response = print_message(" port must be integer " + "Example: 8089" + "Provided port=" + inport_str, "") 
-		return response + more_details
+		response = print_message(" port must be integer " + "Example: 8089" + "Provided port=" + inport_str, "")
+		exit(1)
 	app.run(host='0.0.0.0', port=inport)
