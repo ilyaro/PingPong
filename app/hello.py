@@ -99,9 +99,13 @@ def pingpong():
 			return response + more_details
 		print_message( " iteration " + iterations_count_str + " done, took " + str(round(c.total_seconds() * 1000, 3)) + " miliseconds ", "")
 		iterations_count += 1
-	finish_time = datetime.now()
-	c = finish_time - start_time
-	fin_message = " Game Over, took " + str(round(c.total_seconds() * 1000, 3)) + " ms"
+	else:
+		finish_time = datetime.now()
+		c = finish_time - start_time
+		fin_message = " Game Over, took " + str(round(c.total_seconds() * 1000, 3)) + " ms"
+		print_message(fin_message, "")
+		return fin_message + more_details
+	fin_message = " Game was not started " + iterations "iterations"
 	print_message(fin_message, "")
 	return fin_message + more_details
 
