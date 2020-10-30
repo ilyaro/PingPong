@@ -23,7 +23,7 @@ def pingpong():
 			print(dateTimeObj + " ping " + iterations_count, file=sys.stderr)
 			return redirect('/')
 		except URLError as e:
-			print("Unknown - servcie problem: Can't reach server: " + url_pong, file=sys.stderr)
+			print("Unknown - servcie problem: Cant reach server: " + url_pong, file=sys.stderr)
 			return redirect('/')
 		current_iteration += 1
 		
