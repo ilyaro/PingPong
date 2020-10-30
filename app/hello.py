@@ -105,7 +105,7 @@ def pingpong():
 		fin_message = " Game Over, took " + str(round(c.total_seconds() * 1000, 3)) + " ms"
 		print_message(fin_message, "")
 		return fin_message + more_details
-	fin_message = " Game was not started " + iterations "iterations"
+	fin_message = " Game was not started " + iterations + "iterations"
 	print_message(fin_message, "")
 	return fin_message + more_details
 
