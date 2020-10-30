@@ -2,13 +2,13 @@ version: "3.8"
 services:
   pingpong1:
     image: gfish/pingpong
-    command:  
-      - python3 app/hello.py ${inport}
+    build:
+      context: .
+      args:
+        - PORT=${inport}
     ports:
       - ${outport1}:${inport}
   pingpong2:
     image: gfish/pingpong
-    command:
-      - python3 app/hello.py ${inport}
     ports:
       - ${outport2}:${inport}
