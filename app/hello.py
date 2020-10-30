@@ -18,15 +18,9 @@ import logging
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
 
-def convert(msf):
-    minutes, seconds = msf.split(':')
-    seconds, milliseconds = seconds.split('.')
-    minutes, seconds, milliseconds = map(int, (minutes, seconds, milliseconds))
-    return (minutes * 60 + seconds) * 1000 + milliseconds
-
 def print_message(msg, iterations_count):
 	now = datetime.now()
-	date_time = now.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3]
+	date_time = now.strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
 	## respose to write to browser and std out
 	response = date_time + msg + iterations_count + "\n" 
 	sys.stdout.write(response)
@@ -71,7 +65,7 @@ def pingpong():
 	c = finish_time - start_time
 	fin_message = " Game Over, took " + str(c.total_seconds() * 1000) + " ms"
 	print_message(fin_message, "")
-	return fin_message + "See docker compose output"
+	return fin_message + " See docker compose output for datails"
 
 @app.route("/reply")
 def reply():
