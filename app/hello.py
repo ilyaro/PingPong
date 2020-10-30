@@ -46,9 +46,11 @@ def reply():
 	iterations_count = request.args.get('iterations_count')
 	##print "DEBUG: $url $warnnum $critnum" if ($debug);
 	dateTimeObj = datetime.now()
-	print(dateTimeObj + " pong " + iterations_count, file=sys.stderr)
-	return redirect('/')
-
+	## respose to write to browser and std out
+	response=dateTimeObj + " pong " + iterations_count 
+	sys.stdout.write(response)
+	sys.stdout.flush()
+	return response
 
 if __name__ == "__main__":
 	## Add check if port number is a numbers in the port allowed range
