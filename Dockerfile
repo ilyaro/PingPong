@@ -3,6 +3,7 @@ FROM alpine:latest
 MAINTAINER ilyaro
 
 ARG PORT
+ARG PARTNER
 # Install python/pip
 ENV PYTHONUNBUFFERED=1
 RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
