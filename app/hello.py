@@ -45,9 +45,10 @@ def pingpong():
 def reply():
 	iterations_count = request.args.get('iterations_count')
 	##print "DEBUG: $url $warnnum $critnum" if ($debug);
-	dateTimeObj = datetime.now()
+	now = datetime.now()
+	date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
 	## respose to write to browser and std out
-	response=dateTimeObj + " pong " + iterations_count 
+	response = date_time + " pong " + iterations_count 
 	sys.stdout.write(response)
 	sys.stdout.flush()
 	return response
