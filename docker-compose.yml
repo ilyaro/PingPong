@@ -1,17 +1,11 @@
 version: "3.8"
 services:
   pingpong1:
-    environment:
-      inport: ${inport}
-      outport: ${outport1}
     image: gfish/pingpong
     command:  [ "app/hello.py", ${inport} ]
     ports:
       - "${outport1}:${inport}"
   pingpong2:
-    environment:
-      inport: ${inport}
-      outport: ${outport2}
     image: gfish/pingpong
     command: [ "app/hello.py", ${inport} ]
     ports:
