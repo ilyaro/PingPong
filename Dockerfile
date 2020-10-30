@@ -17,4 +17,4 @@ COPY ./app app
 
 ENTRYPOINT [ "python3" ] 
 
-CMD  ["app/hello.py", $PORT, $PARTNER]
+CMD  ["/app/hello.py", $PORT, $PARTNER]
