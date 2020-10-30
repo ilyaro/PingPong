@@ -43,7 +43,7 @@ def pingpong():
 	while iterations_count <= iterations_int:
 		iterations_count_str = str(iterations_count)
 		## URL for pong
-		url_pong = "http://" + partner + "/reply?iterations_count=" + iterations_count_str
+		url_pong = "http://" + partner + ":" + inport + "/reply?iterations_count=" + iterations_count_str
 		try:
 			res = urllib.request.urlopen(url_pong)
 			response = print_message(" ping ", iterations_count_str)
