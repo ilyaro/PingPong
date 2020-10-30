@@ -23,6 +23,7 @@ def pingpong():
 	iterations = request.args.get('iterations')
 	iterations_int = int(iterations)
 	current_iteration = 1
+	partner = os.getenv('PARTNER')
 	while current_iteration <= iterations_int:
 		#print "DEBUG: $url $warnnum $critnum" if ($debug);
 		url_pong = "http://" + partner + "/reply?iterations_count=" + str(current_iteration)
@@ -51,5 +52,4 @@ def reply():
 if __name__ == "__main__":
 	## Add check if port number is a numbers in the port allowed range
 	inport = int(sys.argv[1])
-	partner = sys.argv[2]
 	app.run(host='0.0.0.0', port=inport)

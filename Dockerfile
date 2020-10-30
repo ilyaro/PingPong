@@ -2,8 +2,6 @@ FROM alpine:latest
 
 MAINTAINER ilyaro
 
-ENV PORT=${PORT}
-ENV PARTNER=${PARTNER}
 # Install python/pip
 ENV PYTHONUNBUFFERED=1
 RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
@@ -15,6 +13,6 @@ RUN pip install flask
 RUN mkdir app
 COPY ./app app
 
-ENTRYPOINT [ "/usr/bin/python3" ] 
+ENTRYPOINT [ "python3" ] 
 
-CMD  ["/app/hello.py", $PORT, $PARTNER]
+CMD  ["app/hello.py", 8089]

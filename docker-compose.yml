@@ -4,17 +4,15 @@ services:
     image: gfish/ping
     build:
       context: .
-      args:
-        PORT: 8089
-        PARTNER: pong
+      environment:
+        - PARTNER=pong
     ports:
       - ${outport1}:${inport}
   pong:
     image: gfish/pong
     build:
       context: .
-      args:
-        PORT: 8089
-        PARTNER: ping
+      environment:
+        - PARTNER=ping
     ports:
       - ${outport2}:${inport}
