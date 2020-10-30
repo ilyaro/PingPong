@@ -53,6 +53,8 @@ def pingpong():
 	while iterations_count <= iterations_int:
 		iterations_count_str = str(iterations_count)
 		a = datetime.now()
+		if iterations_count == 1:
+			start_time = a
 		print_message(" ping ", iterations_count_str)
 		## URL for pong
 		url_pong = "http://" + partner + ":" + inport_str + "/reply?iterations_count=" + iterations_count_str
@@ -65,7 +67,11 @@ def pingpong():
 			return response
 		print_message( " iteration " + iterations_count_str + " done, took " + str(c.total_seconds() * 1000) + " microseconds", "")
 		iterations_count += 1
-	return "PingPong finished"
+	finish_time = datetime.now()
+	c = finish_time - start_time
+	fin_message = " Game Over, took " + str(c.total_seconds() * 1000) + " ms"
+	print_message(fin_message, "")
+	return fin_message
 
 @app.route("/reply")
 def reply():
