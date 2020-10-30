@@ -15,6 +15,6 @@ RUN pip install flask
 RUN mkdir app
 COPY ./app app
 
-ENTRYPOINT [ "python3" ] 
+ENTRYPOINT [ "/usr/bin/python3" ] 
 
 CMD  ["/app/hello.py", $PORT, $PARTNER]

@@ -5,8 +5,8 @@ services:
     build:
       context: .
       args:
-        - PORT=${inport}
-        - PARTNER=pong
+        PORT: ${inport}
+        PARTNER: pong
     ports:
       - ${outport1}:${inport}
   pong:
@@ -14,7 +14,7 @@ services:
     build:
       context: .
       args:
-        - PORT=${inport}
-        - PARTNER=ping
+        PORT: ${inport}
+        PARTNER: ping
     ports:
       - ${outport2}:${inport}
