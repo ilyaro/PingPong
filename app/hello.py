@@ -18,6 +18,12 @@ import logging
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
 
+def convert(msf):
+    minutes, seconds = msf.split(':')
+    seconds, milliseconds = seconds.split('.')
+    minutes, seconds, milliseconds = map(int, (minutes, seconds, milliseconds))
+    return (minutes * 60 + seconds) * 1000 + milliseconds
+
 def print_message(msg, iterations_count):
 	now = datetime.now()
 	date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
@@ -57,7 +63,7 @@ def pingpong():
 		except URLError as e:
 			response = print_message(" Unknown - service problem: Cant reach server: " + url_pong + " ", iterations_count_str) 
 			return response
-		print_message( " iteration " + iterations_count_str + " done, took " + str(c.total_seconds()) + " microseconds", "")
+		print_message( " iteration " + iterations_count_str + " done, took " + str(c.total_seconds() * 1000) + " microseconds", "")
 		iterations_count += 1
 	return "PingPong finished"
 
