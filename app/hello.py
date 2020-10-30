@@ -53,7 +53,7 @@ def pingpong():
 		except URLError as e:
 			response = print_message(" Unknown - service problem: Cant reach server: " + url_pong + " ", iterations_count_str) 
 			return response
-		current_iteration += 1
+		iterations_count += 1
 	return "PingPong finished"
 
 @app.route("/reply")
