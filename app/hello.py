@@ -1,7 +1,7 @@
 import flask
 from flask import request
-import shlex, subprocess
 import sys
+from datetime import datetime
 
 app = flask.Flask(__name__)
 
@@ -13,28 +13,32 @@ def hello():
 @app.route("/pingpong")
 def pingpong():
     iterations = request.args.get('iterations')
-    return "Number of PingPong iterations: " + iterations
+	current_iteration = 1
+	while current_iteration <= iterations:
+		#print "DEBUG: $url $warnnum $critnum" if ($debug);
+		url_pong = "http://" + partner + "/reply?iterations_count=" + current_iteration
+		try:
+			res = urllib.request.urlopen(url_pong)
+			dateTimeObj = datetime.now()
+			print(dateTimeObj + " ping " + iterations_count, file=sys.stderr)
+			return redirect('/')
+		except URLError as e:
+			print("Unknown - servcie problem: Can't reach server: " + url_pong, file=sys.stderr)
+			return redirect('/')
+		current_iteration += 1
+		
 
-@app.route("/intense")
-def intense():
-    def load_cpu():
-        """
-        Run a cpu load command for 60 seconds.
-        """
-        ## Prinet the message first
-        yield "CPU will be load for 60 seconds" + "<br/>\n"
-        ##seconds = "6"
-        try:
-             proc = subprocess.Popen(['/usr/bin/stress --cpu 4 --timeout 6'],shell=True)
-             proc.communicate()
-        finally:
-           pass 
-        yield "Done - The CPU was loaded now for 60 seconds"
-    return flask.Response(load_cpu(), mimetype='text/html') 
-
+@app.route("/reply")
+def reply():
+    iterations_count = request.args.get('iterations_count')
+	##print "DEBUG: $url $warnnum $critnum" if ($debug);
+	dateTimeObj = datetime.now()
+	print(dateTimeObj + " pong " + iterations_count, file=sys.stderr)
+	return redirect('/')
 
 
 if __name__ == "__main__":
     ## Add check if port number is a numbers in the port allowed range
     inport = int(sys.argv[1])
+	partner = sys.argv[2]
     app.run(host='0.0.0.0', port=inport)
