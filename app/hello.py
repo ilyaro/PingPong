@@ -65,13 +65,13 @@ def pingpong():
 		except URLError as e:
 			response = print_message(" Unknown - service problem: Cant reach server: " + url_pong + " ", iterations_count_str) 
 			return response
-		print_message( " iteration " + iterations_count_str + " done, took " + str(c.total_seconds() * 1000) + " microseconds", "")
+		print_message( " iteration " + iterations_count_str + " done, took " + str(c.total_seconds() * 1000) + " miliseconds ", "")
 		iterations_count += 1
 	finish_time = datetime.now()
 	c = finish_time - start_time
 	fin_message = " Game Over, took " + str(c.total_seconds() * 1000) + " ms"
 	print_message(fin_message, "")
-	return fin_message
+	return fin_message + "See docker compose output"
 
 @app.route("/reply")
 def reply():
