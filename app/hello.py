@@ -64,7 +64,7 @@ def pingpong():
 			##Check if timeout is reached
 			curr_whole_time = round((b - start_time).total_seconds() * 1000)
 			if curr_whole_time > timeout_int:
-				response = print_message(" Game Over. Timeout: " + timeout + " miliseconds " + " is reached. " + "The Game time is " + str(curr_whole_time) + " miliseconds ", "") 
+				response = print_message(" Game Over. Timeout: " + timeout + " miliseconds " + " is reached. " + "The Game time is " + str(curr_whole_time) + " miliseconds. " + " Please see docker compose output for details", "") 
 				return response
 		except URLError as e:
 			response = print_message(" Unknown - service problem: Cant reach server: " + url_pong + " ", iterations_count_str) 
@@ -75,7 +75,7 @@ def pingpong():
 	c = finish_time - start_time
 	fin_message = " Game Over, took " + str(round(c.total_seconds() * 1000, 3)) + " ms"
 	print_message(fin_message, "")
-	return fin_message + " See docker compose output for datails"
+	return fin_message + " Please see docker compose output for details"
 
 @app.route("/reply")
 def reply():
