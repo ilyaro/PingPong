@@ -1,14 +1,20 @@
 version: "3.8"
 services:
-  pingpong1:
-    image: gfish/pingpong
+  ping:
+    image: gfish/ping
     build:
       context: .
       args:
         - PORT=${inport}
+        - PARTNER='pong'
     ports:
       - ${outport1}:${inport}
-  pingpong2:
-    image: gfish/pingpong
+  pong:
+    image: gfish/pong
+    build:
+      context: .
+      args:
+        - PORT=${inport}
+        - PARTNER='ping'
     ports:
       - ${outport2}:${inport}
