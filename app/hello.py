@@ -34,6 +34,7 @@ def pingpong():
 	iterations = request.args.get('iterations')
 	iterations_int = int(iterations)
 	iterations_count = 1
+	inport_str = str(inport)
 	myhostname = os.getenv('HOSTNAME')
 	## Get partner hostname
 	if myhostname == "ping":
@@ -43,7 +44,7 @@ def pingpong():
 	while iterations_count <= iterations_int:
 		iterations_count_str = str(iterations_count)
 		## URL for pong
-		url_pong = "http://" + partner + ":" + inport + "/reply?iterations_count=" + iterations_count_str
+		url_pong = "http://" + partner + ":" + inport_str + "/reply?iterations_count=" + iterations_count_str
 		try:
 			res = urllib.request.urlopen(url_pong)
 			response = print_message(" ping ", iterations_count_str)
