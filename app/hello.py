@@ -22,7 +22,7 @@ def print_message(msg, iterations_count):
 	response = date_time + msg + iterations_count 
 	sys.stdout.write(response)
 	sys.stdout.flush()
-	return response
+	##return response
 
 
 @app.route("/")
@@ -49,7 +49,7 @@ def pingpong():
 		url_pong = "http://" + partner + ":" + inport_str + "/reply?iterations_count=" + iterations_count_str
 		try:
 			res = urllib.request.urlopen(url_pong)
-			response = print_message(" ping ", iterations_count_str)
+			print_message(" ping ", iterations_count_str)
 		except URLError as e:
 			response = print_message(" Unknown - service problem: Cant reach server: " + url_pong + " ", iterations_count_str) 
 			return response
@@ -59,7 +59,7 @@ def pingpong():
 def reply():
 	iterations_count = request.args.get('iterations_count')
 	response = print_message(" pong ", iterations_count)
-	return response
+	##return response
 
 if __name__ == "__main__":
 	## Add check if port number is a numbers in the port allowed range
