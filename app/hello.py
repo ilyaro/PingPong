@@ -34,8 +34,12 @@ def hello():
 
 @app.route("/pingpong")
 def pingpong():
+	## Get iterations argument
 	iterations = request.args.get('iterations')
 	iterations_int = int(iterations)
+	##Get timeout optional argument
+	timeout = request.args.get('timeout', None)
+	timeout_int = int(timeout)
 	iterations_count = 1
 	inport_str = str(inport)
 	myhostname = os.getenv('HOSTNAME')
@@ -56,6 +60,10 @@ def pingpong():
 			res = urllib.request.urlopen(url_pong)
 			b = datetime.now()
 			c = b - a
+			##Check if timeout is reached 
+			if (b - start_time) > timeout_int and (timeout is not None):
+				response = print_message("Game Over. Timeout: " + timeout + "miliseconds " + " is reached. " + "The Game time is " + str(round(c.total_seconds() * 1000, 3)) + " miliseconds ", "") 
+				return response
 		except URLError as e:
 			response = print_message(" Unknown - service problem: Cant reach server: " + url_pong + " ", iterations_count_str) 
 			return response
