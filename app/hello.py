@@ -16,7 +16,7 @@ def pingpong():
 	current_iteration = 1
 	while current_iteration <= iterations:
 		#print "DEBUG: $url $warnnum $critnum" if ($debug);
-		url_pong = "http://" + partner + "/reply?iterations_count=" + current_iteration
+		url_pong = "http://" + partner + "/reply?iterations_count=" + str(current_iteration)
 		try:
 			res = urllib.request.urlopen(url_pong)
 			dateTimeObj = datetime.now()
