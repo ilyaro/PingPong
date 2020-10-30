@@ -26,7 +26,7 @@ def convert(msf):
 
 def print_message(msg, iterations_count):
 	now = datetime.now()
-	date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
+	date_time = now.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3]
 	## respose to write to browser and std out
 	response = date_time + msg + iterations_count + "\n" 
 	sys.stdout.write(response)
