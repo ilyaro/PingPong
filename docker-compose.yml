@@ -8,9 +8,11 @@ services:
       context: .
     ports:
       - ${outport1}:${inport}
+    hostname: 'ping'
   pong:
     image: gfish/pingpong
     environment:
       - PARTNER=ping
     ports:
       - ${outport2}:${inport}
+    hostname: 'pong'
