@@ -15,4 +15,4 @@ COPY ./app app
 
 ENTRYPOINT [ "python3" ] 
 
-CMD  ["app/hello.py", 8089]
+CMD  ["app/hello.py", "8089"]
