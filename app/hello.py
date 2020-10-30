@@ -113,7 +113,7 @@ def reply():
 	pongsleep = request.args.get('pongsleep', None)
 	if pongsleep:
 		import time
-		time.sleep(pongsleep/1000)
+		time.sleep(int(pongsleep)/1000)
 	response = print_message(" pong ", iterations_count)
 	return response
 
