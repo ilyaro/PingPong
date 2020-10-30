@@ -12,7 +12,7 @@ services:
     environment:
       inport: ${inport}
       outport: ${outport2}
-      image: gfish/pingpong
+    image: gfish/pingpong
     command: ${inport}
     ports:
       - "${outport2}:${inport}"
