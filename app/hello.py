@@ -14,12 +14,15 @@ from urllib.error import URLError
 
 app = flask.Flask(__name__)
 
+import logging
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.ERROR)
 
 def print_message(msg, iterations_count):
 	now = datetime.now()
 	date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
 	## respose to write to browser and std out
-	response = date_time + msg + iterations_count 
+	response = date_time + msg + iterations_count + "\n" 
 	sys.stdout.write(response)
 	sys.stdout.flush()
 	return response
