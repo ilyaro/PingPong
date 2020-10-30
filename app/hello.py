@@ -60,10 +60,12 @@ def pingpong():
 			res = urllib.request.urlopen(url_pong)
 			b = datetime.now()
 			c = b - a
-			##Check if timeout is reached 
-			if (b - start_time) > timeout_int and (timeout is not None):
-				response = print_message("Game Over. Timeout: " + timeout + "miliseconds " + " is reached. " + "The Game time is " + str(round(c.total_seconds() * 1000, 3)) + " miliseconds ", "") 
-				return response
+			##Check if timeout is reached
+			curr_whole_time = b - start_time
+			if timeout:
+				if round(curr_whole_time.total_seconds() * 1000) > timeout_int:
+					response = print_message("Game Over. Timeout: " + timeout + "miliseconds " + " is reached. " + "The Game time is " + str(round(c.total_seconds() * 1000, 3)) + " miliseconds ", "") 
+					return response
 		except URLError as e:
 			response = print_message(" Unknown - service problem: Cant reach server: " + url_pong + " ", iterations_count_str) 
 			return response
