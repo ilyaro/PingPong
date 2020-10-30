@@ -7,7 +7,7 @@ services:
     image: gfish/pingpong
     command: ${inport}
     ports:
-      - "${outport}:${inport}
+      - "${outport}:${inport}"
   pingpong2:
     environment:
       - inport=8089
@@ -15,4 +15,4 @@ services:
     image: gfish/pingpong
     command: ${inport}
     ports:
-      - "${outport}:${inport}
+      - "${outport}:${inport}"
