@@ -58,6 +58,9 @@ def pingpong():
 			response = print_message(" timeout must be integer " + "Example: &timeout=40 " + "Provided &timeout=" + timeout, "") 
 			return response + more_details
 	iterations_count = 1
+	if iterations_count > iterations_int:
+		response = print_message(" iterations must be non zero integer " + "Example: /pingpong?iterations=10 " + "Provided /pingpong?iterations=" + iterations, "") 
+		return response + more_details
 	##inport_str = str(inport)
 	myhostname = os.getenv('HOSTNAME')
 	## Get partner hostname
