@@ -58,17 +58,6 @@ def pingpong():
 		else:
 			response = print_message(" timeout must be integer " + "Example: &timeout=40 " + "Provided &timeout=" + timeout, "") 
 			return response + more_details
-	##Get pongsleep optional argument
-	pongsleep = request.args.get('pongsleep', None)
-	if pongsleep:
-		if is_integer(pongsleep):
-			pongsleep_int = int(pongsleep)
-		else:
-			response = print_message(" pongsleep must be integer " + "Example: &pongsleep=3 " + "Provided &pongsleep=" + iterations, "") 
-			return response + more_details
-
-	if is_integer(pongsleep):
-		pongsleep_int = int(pongsleep)
 	iterations_count = 1
 	inport_str = str(inport)
 	myhostname = os.getenv('HOSTNAME')
@@ -77,6 +66,17 @@ def pingpong():
 		partner = "pong"
 	else:
 		partner = "ping"
+	##Get pongsleep optional argument
+	pongsleep = request.args.get('pongsleep', None)
+	if pongsleep:
+		if is_integer(pongsleep):
+			url_po = "http://" + partner + ":" + inport_str + "/reply?pongsleep=" + pongsleep + "&iterations_count="
+		else:
+			response = print_message(" pongsleep must be integer " + "Example: &pongsleep=3 " + "Provided &pongsleep=" + iterations, "") 
+			return response + more_details
+	else:
+		url_po = "http://" + partner + ":" + inport_str + "/reply?" + "iterations_count="
+	## Iteration of ping pong
 	while iterations_count <= iterations_int:
 		iterations_count_str = str(iterations_count)
 		a = datetime.now()
@@ -84,7 +84,7 @@ def pingpong():
 			start_time = a
 		print_message(" ping ", iterations_count_str)
 		## URL for pong
-		url_pong = "http://" + partner + ":" + inport_str + "/reply?iterations_count=" + iterations_count_str
+		url_pong = url_po + iterations_count_str
 		try:
 			res = urllib.request.urlopen(url_pong)
 			b = datetime.now()
@@ -107,7 +107,13 @@ def pingpong():
 
 @app.route("/reply")
 def reply():
+	## Get iteration counter
 	iterations_count = request.args.get('iterations_count')
+	##Get pongsleep optional argument
+	pongsleep = request.args.get('pongsleep', None)
+	if pongsleep:
+		import time
+		time.sleep(pongsleep/1000)
 	response = print_message(" pong ", iterations_count)
 	return response
 
