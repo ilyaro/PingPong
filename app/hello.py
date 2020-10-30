@@ -61,7 +61,7 @@ def pingpong():
 			b = datetime.now()
 			c = b - a
 			##Check if timeout is reached
-			curr_whole_time = round(b - start_time).total_seconds() * 1000
+			curr_whole_time = round((b - start_time).total_seconds()) * 1000
 			##round(curr_whole_time.total_seconds() * 1000)
 			if timeout:
 				if curr_whole_time > timeout_int:
