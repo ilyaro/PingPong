@@ -6,7 +6,7 @@ services:
       context: .
       args:
         - PORT=${inport}
-        - PARTNER='pong'
+        - PARTNER=pong
     ports:
       - ${outport1}:${inport}
   pong:
@@ -15,6 +15,6 @@ services:
       context: .
       args:
         - PORT=${inport}
-        - PARTNER='ping'
+        - PARTNER=ping
     ports:
       - ${outport2}:${inport}
