@@ -15,6 +15,16 @@ from urllib.error import URLError
 app = flask.Flask(__name__)
 
 
+def print_message(msg):
+	now = datetime.now()
+	date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
+	## respose to write to browser and std out
+	response = date_time + msg + iterations_count 
+	sys.stdout.write(response)
+	sys.stdout.flush()
+	return response
+
+
 @app.route("/")
 def hello():
 	return "PingPong Game of 2 Microservices"
@@ -30,13 +40,10 @@ def pingpong():
 		url_pong = "http://" + partner + "/reply?iterations_count=" + str(current_iteration)
 		try:
 			res = urllib.request.urlopen(url_pong)
-			dateTimeObj = datetime.now()
-			print(dateTimeObj + " ping " + iterations_count, file=sys.stderr)
-			return redirect('/')
+			response = print_message("ping")
+			return response
 		except URLError as e:
-			response="Unknown - servcie problem: Cant reach server: " + url_pong 
-			sys.stdout.write(response)
-			sys.stdout.flush()
+			response = print_message("Unknown - service problem: Cant reach server: " + url_pong) 
 			return response
 		current_iteration += 1
 		
@@ -44,13 +51,7 @@ def pingpong():
 @app.route("/reply")
 def reply():
 	iterations_count = request.args.get('iterations_count')
-	##print "DEBUG: $url $warnnum $critnum" if ($debug);
-	now = datetime.now()
-	date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
-	## respose to write to browser and std out
-	response = date_time + " pong " + iterations_count 
-	sys.stdout.write(response)
-	sys.stdout.flush()
+	response = print_message("pong")
 	return response
 
 if __name__ == "__main__":
