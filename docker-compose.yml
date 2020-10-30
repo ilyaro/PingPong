@@ -12,7 +12,5 @@ services:
     image: gfish/pong
     environment:
       - PARTNER=ping
-    build:
-      context: .
     ports:
       - ${outport2}:${inport}
