@@ -10,5 +10,5 @@ services:
     image: gfish/pingpong
     command:
       - app/hello.py ${inport}
-  ports:
+    ports:
       - ${outport2}:${inport}
