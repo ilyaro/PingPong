@@ -2,17 +2,17 @@ version: "3.8"
 services:
   pingpong1:
     environment:
-      - inport=8089
-      - outport=8001
+      inport: ${inport}
+      outport: ${outport1}
     image: gfish/pingpong
     command: ${inport}
     ports:
-      - "${outport}:${inport}"
+      - "${outport1}:${inport}"
   pingpong2:
     environment:
-      - inport=8089
-      - outport=8002
-    image: gfish/pingpong
+      inport: ${inport}
+      outport: ${outport2}
+      image: gfish/pingpong
     command: ${inport}
     ports:
-      - "${outport}:${inport}"
+      - "${outport2}:${inport}"
