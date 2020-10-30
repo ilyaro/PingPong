@@ -8,11 +8,11 @@ app = flask.Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "PingPong Game of 2 Microservices"
+	return "PingPong Game of 2 Microservices"
 
 @app.route("/pingpong")
 def pingpong():
-    iterations = request.args.get('iterations')
+	iterations = request.args.get('iterations')
 	current_iteration = 1
 	while current_iteration <= iterations:
 		#print "DEBUG: $url $warnnum $critnum" if ($debug);
@@ -30,7 +30,7 @@ def pingpong():
 
 @app.route("/reply")
 def reply():
-    iterations_count = request.args.get('iterations_count')
+	iterations_count = request.args.get('iterations_count')
 	##print "DEBUG: $url $warnnum $critnum" if ($debug);
 	dateTimeObj = datetime.now()
 	print(dateTimeObj + " pong " + iterations_count, file=sys.stderr)
@@ -38,7 +38,7 @@ def reply():
 
 
 if __name__ == "__main__":
-    ## Add check if port number is a numbers in the port allowed range
-    inport = int(sys.argv[1])
+	## Add check if port number is a numbers in the port allowed range
+	inport = int(sys.argv[1])
 	partner = sys.argv[2]
-    app.run(host='0.0.0.0', port=inport)
+	app.run(host='0.0.0.0', port=inport)
