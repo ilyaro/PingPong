@@ -18,6 +18,14 @@ import logging
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
 
+def is_integer(n):
+    try:
+        float(n)
+    except ValueError:
+        return False
+    else:
+        return float(n).is_integer()
+
 def print_message(msg, iterations_count):
 	now = datetime.now()
 	date_time = now.strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
@@ -34,13 +42,33 @@ def hello():
 
 @app.route("/pingpong")
 def pingpong():
+	more_details = " Please see docker compose output for more details"
 	## Get iterations argument
 	iterations = request.args.get('iterations')
-	iterations_int = int(iterations)
+	if is_integer(iterations):
+		iterations_int = int(iterations)
+	else:
+		response = print_message(" iterations must be integer " + "Example: /pingpong?iterations=10 " + "Provided /pingpong?iterations=" + iterations, "") 
+		return response + more_details
 	##Get timeout optional argument
 	timeout = request.args.get('timeout', None)
 	if timeout:
-		timeout_int = int(timeout)
+		if is_integer(timeout):
+			timeout_int = int(timeout)
+		else:
+			response = print_message(" timeout must be integer " + "Example: &timeout=40 " + "Provided &timeout=" + timeout, "") 
+			return response + more_details
+	##Get pongsleep optional argument
+	pongsleep = request.args.get('pongsleep', None)
+	if pongsleep:
+		if is_integer(pongsleep):
+			pongsleep_int = int(pongsleep)
+		else:
+			response = print_message(" pongsleep must be integer " + "Example: &pongsleep=3 " + "Provided &pongsleep=" + iterations, "") 
+			return response + more_details
+
+	if is_integer(pongsleep):
+		pongsleep_int = int(pongsleep)
 	iterations_count = 1
 	inport_str = str(inport)
 	myhostname = os.getenv('HOSTNAME')
@@ -64,18 +92,18 @@ def pingpong():
 			##Check if timeout is reached
 			curr_whole_time = round((b - start_time).total_seconds() * 1000)
 			if curr_whole_time > timeout_int:
-				response = print_message(" Game Over. Timeout: " + timeout + " miliseconds " + " is reached. " + "The Game time is " + str(curr_whole_time) + " miliseconds. " + " Please see docker compose output for details", "") 
-				return response
+				response = print_message(" Game Over. Timeout: " + timeout + " miliseconds " + " is reached. " + "The Game time is " + str(curr_whole_time) + " miliseconds. ", "") 
+				return response + more_details
 		except URLError as e:
 			response = print_message(" Unknown - service problem: Cant reach server: " + url_pong + " ", iterations_count_str) 
-			return response
+			return response + more_details
 		print_message( " iteration " + iterations_count_str + " done, took " + str(round(c.total_seconds() * 1000, 3)) + " miliseconds ", "")
 		iterations_count += 1
 	finish_time = datetime.now()
 	c = finish_time - start_time
 	fin_message = " Game Over, took " + str(round(c.total_seconds() * 1000, 3)) + " ms"
 	print_message(fin_message, "")
-	return fin_message + " Please see docker compose output for details"
+	return fin_message + more_details
 
 @app.route("/reply")
 def reply():
