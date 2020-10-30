@@ -22,7 +22,7 @@ def print_message(msg, iterations_count):
 	response = date_time + msg + iterations_count 
 	sys.stdout.write(response)
 	sys.stdout.flush()
-	##return response
+	return response
 
 
 @app.route("/")
