@@ -5,8 +5,10 @@ http://localhost:[port]/pingpong?iterations=[integer]&timeout=[integer]&pongslee
 
 Example: http://localhost:8001/pingpong?iterations=10&timeout=70&pongsleep=2
 
-port specified in .env
+port specified in blob/dev/.env
+
 timeout and pongsleep in miliseconds only!
+
 The Game takes aproximately 60 miliseconds on https://labs.play-with-docker.com
 
 When the container gets the request, it starts playing ping pong with the other container by sending it an HTTP request
