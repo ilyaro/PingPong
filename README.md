@@ -19,3 +19,4 @@ $ cd PingPong/
 [node1] (local) root@192.168.0.18 ~/PingPong
 $ docker-compose up --build
 
+![alt text](https://user-images.githubusercontent.com/40502115/97773120-cff45b00-1b55-11eb-8b19-f399844a5406.png)
