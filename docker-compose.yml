@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+  ping:
+    image: gfish/pingpong
+    environment:
+      - INPORT=${inport}
+    build:
+      context: .
+    ports:
+      - ${outport1}:${inport}
+    hostname: 'ping'
+  pong:
+    image: gfish/pingpong
+    environment:
+      - INPORT=${inport}
+    ports:
+      - ${outport2}:${inport}
+    hostname: 'pong'
