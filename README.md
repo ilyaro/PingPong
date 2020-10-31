@@ -7,7 +7,7 @@ Example: http://localhost:8001/pingpong?iterations=10&timeout=70&pongsleep=2
 
 [port] specified in [.env](.env)
 
-timeout and pongsleep in miliseconds only!
+timeout and pongsleep is in miliseconds only!
 
 The Game takes aproximately 60 miliseconds on https://labs.play-with-docker.com
 
