@@ -13,6 +13,6 @@ RUN pip install flask
 RUN mkdir app
 COPY ./app app
 
-ENTRYPOINT [ "python3" ] 
+ENTRYPOINT [ "python3 -u" ] 
 
 CMD  ["app/pingpong_ms.py", "8089"]
