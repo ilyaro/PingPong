@@ -5,7 +5,7 @@ http://localhost:[port]/pingpong?iterations=[integer]&timeout=[integer]&pongslee
 
 Example: http://localhost:8001/pingpong?iterations=10&timeout=70&pongsleep=2
 
-port specified in blob/dev/.env
+[port] specified in [.env](.env)
 
 timeout and pongsleep in miliseconds only!
 
