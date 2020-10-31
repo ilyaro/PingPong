@@ -108,10 +108,10 @@ def pingpong():
 		finish_time = datetime.now()
 		c = finish_time - start_time
 		fin_message = " Game Over, took " + str(round(c.total_seconds() * 1000, 3)) + " ms"
-		print_message(fin_message, "")
+		print_message(fin_message, "\n")
 		return fin_message + more_details
 	fin_message = " Game was not started " + iterations + "iterations"
-	print_message(fin_message, "")
+	print_message(fin_message, "\n")
 	return fin_message + more_details
 
 @app.route("/reply")
