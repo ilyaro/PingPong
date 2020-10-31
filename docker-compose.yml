@@ -4,6 +4,7 @@ services:
     image: gfish/pingpong
     environment:
       - PARTNER=pong
+      - PYTHONUNBUFFERED=1
     build:
       context: .
     ports:
@@ -13,6 +14,7 @@ services:
     image: gfish/pingpong
     environment:
       - PARTNER=ping
+      - PYTHONUNBUFFERED=1
     ports:
       - ${outport2}:${inport}
     hostname: 'pong'
