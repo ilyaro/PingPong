@@ -61,7 +61,7 @@ def pingpong():
 	if iterations_count > iterations_int:
 		response = print_message(" iterations must be non zero integer " + "Example: /pingpong?iterations=10 " + "Provided /pingpong?iterations=" + iterations, "") 
 		return response + more_details
-	##inport_str = str(inport)
+	## Get hostname that was set in docker-com.yml
 	myhostname = os.getenv('HOSTNAME')
 	## Get partner hostname
 	if myhostname == "ping":
@@ -125,7 +125,7 @@ def reply():
 	return response
 
 if __name__ == "__main__":
-	inport_str = sys.argv[1]
+	inport_str = os.getenv('INPORT')
 	more_details = " Please see docker compose output for more details"
 	if is_integer(inport_str):
 		inport = int(inport_str)

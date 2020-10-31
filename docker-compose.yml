@@ -3,8 +3,7 @@ services:
   ping:
     image: gfish/pingpong
     environment:
-      - PARTNER=pong
-      - PYTHONUNBUFFERED=0
+      - INPORT=${inport}
     build:
       context: .
     ports:
@@ -13,8 +12,7 @@ services:
   pong:
     image: gfish/pingpong
     environment:
-      - PARTNER=ping
-      - PYTHONUNBUFFERED=0
+      - INPORT=${inport}
     ports:
       - ${outport2}:${inport}
     hostname: 'pong'
