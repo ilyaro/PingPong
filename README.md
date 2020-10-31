@@ -19,4 +19,8 @@ $ cd PingPong/
 [node1] (local) root@192.168.0.18 ~/PingPong
 $ docker-compose up --build
 
+Run this URL (Click on 8001 or 8002 link)
 ![alt text](https://user-images.githubusercontent.com/40502115/97773120-cff45b00-1b55-11eb-8b19-f399844a5406.png)
+
+The Game results
+![alt text](https://user-images.githubusercontent.com/40502115/97773453-6f1a5200-1b58-11eb-8ce4-1f8c1a889415.png)
