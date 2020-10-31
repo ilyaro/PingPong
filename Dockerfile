@@ -15,4 +15,4 @@ COPY ./app app
 
 ENTRYPOINT [ "python3" ] 
 
-CMD  ["-u", "app/hello.py", "8089"]
+CMD  ["app/pingpong_ms.py", "8089"]
