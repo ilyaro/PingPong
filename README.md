@@ -22,5 +22,8 @@ $ docker-compose up --build
 Run this URL (Click on 8001 or 8002 link)
 ![alt text](https://user-images.githubusercontent.com/40502115/97773120-cff45b00-1b55-11eb-8b19-f399844a5406.png)
 
-The Game results
+The Game results in Browser
+![alt text](https://user-images.githubusercontent.com/40502115/97773511-0384b480-1b59-11eb-932c-573f08751031.png)
+
+The Game results in Docker Compose STDOUT
 ![alt text](https://user-images.githubusercontent.com/40502115/97773453-6f1a5200-1b58-11eb-8ce4-1f8c1a889415.png)
