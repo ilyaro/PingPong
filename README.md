@@ -5,7 +5,7 @@ http://localhost:[port]/pingpong?iterations=[integer]&timeout=[integer]&pongslee
 
 Example: http://localhost:8001/pingpong?iterations=10&timeout=70&pongsleep=2
 
-[port] specified in [.env](.env)
+[port] is specified in [.env](.env) file
 
 timeout and pongsleep is in miliseconds only!
 
@@ -36,5 +36,5 @@ The Game results in Browser
 The Game results in Docker Compose STDOUT
 ![alt text](https://user-images.githubusercontent.com/40502115/97773453-6f1a5200-1b58-11eb-8ce4-1f8c1a889415.png)
 
-The Game timeout
+The Game results when timeout is reached
 ![alt text](https://user-images.githubusercontent.com/40502115/97774617-1ea7f200-1b62-11eb-9f40-8c836c7e8797.png)
