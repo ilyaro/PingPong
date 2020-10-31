@@ -78,6 +78,8 @@ def pingpong():
 			return response + more_details
 	else:
 		url_po = "http://" + partner + ":" + inport_str + "/reply?" + "iterations_count="
+	## Print Start New Game Message 
+	print_message(" New PingPong game started ", "\n")
 	## Iteration of ping pong
 	while iterations_count <= iterations_int:
 		iterations_count_str = str(iterations_count)
