@@ -19,14 +19,17 @@ by the parameter of the pingpong request.
 # How to run Docker Compose
 Login to the machine (Tested on https://labs.play-with-docker.com)
 
-Clone this repository
+Clone this repository:
+
 [node1] (local) root@192.168.0.18 ~git clone https://github.com/ilyaro/PingPong.git
 
 cd to PingPong folder
+
 [node1] (local) root@192.168.0.18 ~
 $ cd PingPong
 
 Run dcoker-compose up with --build to build first the image. Once buit can be run without --build option
+
 [node1] (local) root@192.168.0.18 ~/PingPong
 $ docker-compose up --build
 
