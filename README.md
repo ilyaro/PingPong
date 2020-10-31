@@ -1,7 +1,12 @@
 # PingPong
 The Docker Compose contain 2 containers, each listening on a different port on the host, but both implement the same API:
 
-http://localhost:[port]/pingpong?iterations=[integer]
+http://localhost:[port]/pingpong?iterations=[integer]&timeout=[integer]&pongsleep=[integer]
+
+Example: http://localhost:8001/pingpong?iterations=10&timeout=70&pongsleep=2
+
+timeout and pongsleep in miliseconds only!
+The Game takes aproximately 60 miliseconds on https://labs.play-with-docker.com
 
 When the container gets the request, it starts playing ping pong with the other container by sending it an HTTP request
 and receiving a response. Each request/response is a single iteration, and the number of iterations to play is determined
